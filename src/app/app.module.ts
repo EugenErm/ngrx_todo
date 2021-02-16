@@ -11,6 +11,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreRouterConnectingModule} from '@ngrx/router-store';
+import {TodoModule} from './modules/todo/todo.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import {StoreRouterConnectingModule} from '@ngrx/router-store';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    TodoModule,
     StoreModule.forRoot({}, {
       runtimeChecks: {
         strictStateImmutability: true,
