@@ -21,10 +21,7 @@ export class TodoListUiComponent {
     this.delete.emit(id);
   }
 
-  onToggle(e, id) {
-    e.preventDefault();
-    e.stopImmediatePropagation();
-
+  onToggle(id) {
     this.toggle.emit(id);
   }
 
