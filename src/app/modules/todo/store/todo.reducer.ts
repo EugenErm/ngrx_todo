@@ -27,5 +27,21 @@ export const todoReducer = createReducer(
         id: state.idIncrement
       }]
     };
+  }),
+  on(TodoActions.deleteItem, (state, {id}) => {
+    return {
+      ...state,
+      todoItems: state.todoItems.filter(item => item.id !== id)
+    };
+  }),
+  on(TodoActions.toggleItem, (state, {id}) => {
+    return {
+      ...state,
+      todoItems: state.todoItems.map(item =>
+        item.id === id ?
+          {...item, completed: !item.completed} :
+          item
+      )
+    };
   })
 );

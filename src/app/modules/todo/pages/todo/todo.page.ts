@@ -12,11 +12,7 @@ import * as TodoActions from '../../store/todo.actions';
 })
 export class TodoPage {
 
-  constructor(private readonly store: Store<TodoState>) {
-  }
-
-  onCreate(name) {
-    this.store.dispatch(TodoActions.createItem({name}));
+  constructor() {
   }
 
 }

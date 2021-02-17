@@ -6,4 +6,12 @@ export const createItem = createAction(
   props<{ name: string }>()
 );
 
-// export const createItem = createAction('[TODO] Create item');
+export const deleteItem = createAction(
+  '[TODO] Delete item',
+  props<{ id: number }>()
+);
+
+export const toggleItem = createAction(
+  '[TODO] Toggle item',
+  props<{ id: number }>()
+);
