@@ -17,13 +17,15 @@ const initialState: TodoState = {
 
 export const todoReducer = createReducer(
   initialState,
-  on(TodoActions.createItem, (state, {name}) => ({
-    ...state,
-    idIncrement: state.idIncrement + 1,
-    todoItems: [...state.todoItems, {
-      name,
-      completed: false,
-      id: state.idIncrement
-    }]
-  }))
+  on(TodoActions.createItem, (state, {name}) => {
+    return {
+      ...state,
+      idIncrement: state.idIncrement + 1,
+      todoItems: [...state.todoItems, {
+        name,
+        completed: false,
+        id: state.idIncrement
+      }]
+    };
+  })
 );

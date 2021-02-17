@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+
+import {TodoState} from '../../store/todo.reducer';
+import * as TodoActions from '../../store/todo.actions';
+
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.page.html',
   styleUrls: ['./todo.page.scss'],
 })
-export class TodoPage implements OnInit {
+export class TodoPage {
 
-  constructor() { }
+  constructor(private readonly store: Store<TodoState>) {
+  }
 
-  ngOnInit() {
+  onCreate(name) {
+    this.store.dispatch(TodoActions.createItem({name}));
   }
 
 }
