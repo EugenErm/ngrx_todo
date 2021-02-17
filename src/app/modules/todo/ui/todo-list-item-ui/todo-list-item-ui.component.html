@@ -1,17 +1,28 @@
 <ion-item>
 
+  <ion-checkbox
+    slot="start"
+    [checked]="todo.completed"
+    (click)="onToggle($event)"
+  ></ion-checkbox>
+
   <ion-label *ngIf="!todo.completed">{{todo.name}}</ion-label>
   <del *ngIf="todo.completed">
     <ion-label>{{todo.name}}</ion-label>
   </del>
 
-  <ion-checkbox slot="end" [checked]="todo.completed"
-                (click)="onToggle($event, todo.id)"></ion-checkbox>
+
 
   <ion-buttons slot="end">
-    <ion-button (click)="onDelete(todo.id)">
+
+    <ion-button (click)="onDelete()">
       <ion-icon slot="icon-only" name="trash"></ion-icon>
     </ion-button>
+
+    <ion-button (click)="onEdit()">
+      <ion-icon slot="icon-only" name="pencil"></ion-icon>
+    </ion-button>
+
   </ion-buttons>
 
 </ion-item>

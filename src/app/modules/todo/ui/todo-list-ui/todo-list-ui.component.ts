@@ -13,6 +13,9 @@ export class TodoListUiComponent {
 
   @Output() delete = new EventEmitter<number>();
   @Output() toggle = new EventEmitter<number>();
+  @Output() edit = new EventEmitter<{ id, name }>();
+
+  editModeIds = [];
 
   constructor() {
   }
@@ -25,8 +28,25 @@ export class TodoListUiComponent {
     this.toggle.emit(id);
   }
 
+  onEdit(id, name) {
+    this.edit.emit({id, name});
+    this.onCancelEditMode(id);
+  }
+
   myTrackByFunction(index, todo) {
     return todo.id;
+  }
+
+  isEdit(id) {
+    return !!(this.editModeIds.indexOf(id) + 1);
+  }
+
+  onEditMode(id) {
+    this.editModeIds = [...this.editModeIds, id];
+  }
+
+  onCancelEditMode(id) {
+    this.editModeIds = this.editModeIds.filter(onId => onId !== id);
   }
 
 

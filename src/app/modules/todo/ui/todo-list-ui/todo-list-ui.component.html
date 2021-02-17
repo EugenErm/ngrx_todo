@@ -1,8 +1,22 @@
 <ion-list>
-  <app-todo-list-item-ui
-    *ngFor="let todo of todoList; trackBy: myTrackByFunction"
-    [todo] = "todo"
-    (toggle)="onToggle($event)"
-    (delete)="onDelete($event)"
-  ></app-todo-list-item-ui>
+
+  <ng-container *ngFor="let todo of todoList; trackBy: myTrackByFunction">
+
+    <app-todo-list-item-ui
+      *ngIf="!isEdit(todo.id)"
+      [todo]="todo"
+      (toggle)="onToggle(todo.id)"
+      (delete)="onDelete(todo.id)"
+      (edit)="onEditMode(todo.id)"
+    ></app-todo-list-item-ui>
+
+    <app-todo-list-item-edit-ui
+      *ngIf="isEdit(todo.id)"
+      [todo]="todo"
+      (edit)="onEdit(todo.id, $event)"
+      (cancel)="onCancelEditMode(todo.id)"
+    ></app-todo-list-item-edit-ui>
+
+  </ng-container>
+
 </ion-list>

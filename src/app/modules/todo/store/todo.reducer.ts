@@ -43,5 +43,15 @@ export const todoReducer = createReducer(
           item
       )
     };
+  }),
+  on(TodoActions.editItem, (state, {id, name}) => {
+    return {
+      ...state,
+      todoItems: state.todoItems.map(item =>
+        item.id === id ?
+          {...item, name} :
+          item
+      )
+    };
   })
 );

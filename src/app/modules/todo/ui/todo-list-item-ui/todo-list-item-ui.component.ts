@@ -6,26 +6,31 @@ import {Todo} from '../../models/todo.model';
   templateUrl: './todo-list-item-ui.component.html',
   styleUrls: ['./todo-list-item-ui.component.scss'],
 })
-export class TodoListItemUiComponent implements OnInit {
+export class TodoListItemUiComponent {
 
   @Input() todo: Todo;
 
-  @Output() delete = new EventEmitter<number>();
-  @Output() toggle = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<void>();
+  @Output() toggle = new EventEmitter<void>();
+  @Output() edit = new EventEmitter<void>();
 
-  constructor() { }
-
-  ngOnInit() {}
-
-  onDelete(id) {
-    this.delete.emit(id);
+  constructor() {
   }
 
-  onToggle(e, id) {
+  onDelete() {
+    this.delete.emit();
+  }
+
+  onToggle(e) {
     e.preventDefault();
     e.stopImmediatePropagation();
 
-    this.toggle.emit(id);
+    this.toggle.emit();
   }
+
+  onEdit() {
+    this.edit.emit();
+  }
+
 
 }

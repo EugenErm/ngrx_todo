@@ -1,0 +1,19 @@
+<form action="#" (ngSubmit)="onEdit()">
+  <ion-item>
+
+    <ion-input [(ngModel)]="name" name="name"></ion-input>
+
+    <ion-buttons slot="end">
+
+      <ion-button [disabled]="name === todo.name" type="submit">
+        <ion-icon slot="icon-only" name="save"></ion-icon>
+      </ion-button>
+
+      <ion-button (click)="onCancel()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-item>
+</form>

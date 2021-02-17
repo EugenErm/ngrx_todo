@@ -27,7 +27,11 @@ export class TodoWidgetComponent implements OnInit {
     this.store.dispatch(TodoActions.deleteItem({id}));
   }
 
-  onToggle(id){
+  onToggle(id) {
     this.store.dispatch(TodoActions.toggleItem({id}));
+  }
+
+  onEdit(payload) {
+    this.store.dispatch(TodoActions.editItem(payload));
   }
 }

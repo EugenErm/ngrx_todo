@@ -10,6 +10,7 @@ import {IonicModule} from '@ionic/angular';
 import {FormsModule} from '@angular/forms';
 import {TodoListUiComponent} from './ui/todo-list-ui/todo-list-ui.component';
 import {TodoListItemUiComponent} from './ui/todo-list-item-ui/todo-list-item-ui.component';
+import {TodoListItemEditUiComponent} from './ui/todo-list-item-edit-ui/todo-list-item-edit-ui.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const components = [
 
   TodoCreateFormUiComponent,
   TodoListUiComponent,
-  TodoListItemUiComponent
+  TodoListItemUiComponent,
+  TodoListItemEditUiComponent
 ];
 
 
