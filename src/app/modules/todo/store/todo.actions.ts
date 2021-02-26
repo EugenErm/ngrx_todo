@@ -1,4 +1,5 @@
 import {createAction, props} from '@ngrx/store';
+import {Todo} from '../models/todo.model';
 
 
 export const createItem = createAction(
@@ -18,5 +19,5 @@ export const toggleItem = createAction(
 
 export const editItem = createAction(
   '[TODO] Edit item',
-  props<{ id: number, name: string }>()
+  props<{ id: number, changes: Partial<Todo>}>()
 );

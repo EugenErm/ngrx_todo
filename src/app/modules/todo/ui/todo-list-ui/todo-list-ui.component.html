@@ -3,18 +3,18 @@
   <ng-container *ngFor="let todo of todoList; trackBy: myTrackByFunction">
 
     <app-todo-list-item-ui
-      *ngIf="!isEdit(todo.id)"
+      *ngIf="!isEdit(todo._id)"
       [todo]="todo"
-      (toggle)="onToggle(todo.id)"
-      (delete)="onDelete(todo.id)"
-      (edit)="onEditMode(todo.id)"
+      (toggle)="onToggle(todo._id)"
+      (delete)="onDelete(todo._id)"
+      (edit)="onEditMode(todo._id)"
     ></app-todo-list-item-ui>
 
     <app-todo-list-item-edit-ui
-      *ngIf="isEdit(todo.id)"
+      *ngIf="isEdit(todo._id)"
       [todo]="todo"
-      (edit)="onEdit(todo.id, $event)"
-      (cancel)="onCancelEditMode(todo.id)"
+      (edit)="onEdit(todo._id, $event)"
+      (cancel)="onCancelEditMode(todo._id)"
     ></app-todo-list-item-edit-ui>
 
   </ng-container>

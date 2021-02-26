@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {TodoState} from '../../store/todo.reducer';
-import {todoListSelector} from '../../store/todo.selectors';
+import {selectAll} from '../../store/todo.selectors';
 import * as TodoActions from '../../store/todo.actions';
+import {Todo} from '../../models/todo.model';
 
 @Component({
   selector: 'app-todo-widget',
@@ -11,7 +12,7 @@ import * as TodoActions from '../../store/todo.actions';
 })
 export class TodoWidgetComponent implements OnInit {
 
-  todoList$ = this.store.select(todoListSelector);
+  todoList$ = this.store.select(selectAll);
 
   constructor(private readonly store: Store<TodoState>) {
   }
@@ -31,7 +32,7 @@ export class TodoWidgetComponent implements OnInit {
     this.store.dispatch(TodoActions.toggleItem({id}));
   }
 
-  onEdit(payload) {
-    this.store.dispatch(TodoActions.editItem(payload));
+  onEdit({id, name}) {
+    this.store.dispatch(TodoActions.editItem({id, changes: {name}}));
   }
 }
